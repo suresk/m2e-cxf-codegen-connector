@@ -28,6 +28,12 @@
 
     <packaging>pom</packaging>
 
+    <scm>
+        <connection>scm:git:git@github.com:bitstrings/m2e-jaxb2-connector.git</connection>
+        <developerConnection>scm:git:git@github.com:bitstrings/m2e-jaxb2-connector.git</developerConnection>
+        <url>scm:git:git@github.com:bitstrings/m2e-jaxb2-connector.git</url>
+    </scm>
+
     <modules>
         <module>org.bitstrings.eclipse.m2e.connectors.jaxb2</module>
         <module>org.bitstrings.eclipse.m2e.connectors.jaxb2.feature</module>
