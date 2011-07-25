@@ -16,7 +16,7 @@ import org.eclipse.m2e.core.project.IMavenProjectFacade;
 import org.eclipse.m2e.core.project.configurator.AbstractBuildParticipant;
 import org.eclipse.m2e.jdt.AbstractJavaProjectConfigurator;
 
-public class Jaxb2ProjectConfigurator extends AbstractJavaProjectConfigurator
+public class JvNetJaxb2ProjectConfigurator extends AbstractJavaProjectConfigurator
 {
     @Override
     protected String getOutputFolderParameterName()
@@ -30,6 +30,6 @@ public class Jaxb2ProjectConfigurator extends AbstractJavaProjectConfigurator
                     MojoExecution execution,
                     IPluginExecutionMetadata executionMetadata)
     {
-        return new Jaxb2BuildParticipant(execution);
+        return new JvNetJaxb2BuildParticipant(execution);
     }
 }

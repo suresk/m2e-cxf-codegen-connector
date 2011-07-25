@@ -3,18 +3,19 @@
 <lifecycleMappingMetadata>
 
     <pluginExecutions>
+        <!-- org.jvnet.jaxb2.maven2 -->
         <pluginExecution>
             <pluginExecutionFilter>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
-                <versionRange>[0.7.4,)</versionRange>
+                <versionRange>[0.7.3,)</versionRange>
                 <goals>
                     <goal>generate</goal>
                 </goals>
             </pluginExecutionFilter>
             <action>
                 <configurator>
-                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jaxb2Configurator</id>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnetJaxb2Configurator</id>
                 </configurator>
             </action>
         </pluginExecution>
@@ -29,7 +30,7 @@
             </pluginExecutionFilter>
             <action>
                 <configurator>
-                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jaxb2Configurator</id>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnetJaxb2Configurator</id>
                 </configurator>
             </action>
         </pluginExecution>
@@ -44,7 +45,7 @@
             </pluginExecutionFilter>
             <action>
                 <configurator>
-                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jaxb2Configurator</id>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnetJaxb2Configurator</id>
                 </configurator>
             </action>
         </pluginExecution>
@@ -59,7 +60,25 @@
             </pluginExecutionFilter>
             <action>
                 <configurator>
-                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jaxb2Configurator</id>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnetJaxb2Configurator</id>
+                </configurator>
+            </action>
+        </pluginExecution>
+
+        <!-- org.codehaus.mojo -->
+        <pluginExecution>
+            <pluginExecutionFilter>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <versionRange>[1.2,)</versionRange>
+                <goals>
+                    <goal>xjc</goal>
+                    <goal>testXjc</goal>
+                </goals>
+            </pluginExecutionFilter>
+            <action>
+                <configurator>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.codehausJaxb2Configurator</id>
                 </configurator>
             </action>
         </pluginExecution>

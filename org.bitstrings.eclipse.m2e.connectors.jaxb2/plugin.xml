@@ -15,9 +15,16 @@
 
    <extension point="org.eclipse.m2e.core.projectConfigurators">
       <configurator
-            class="org.bitstrings.eclipse.m2e.connectors.jaxb2.Jaxb2ProjectConfigurator"
-            id="org.bitstrings.eclipse.m2e.connectors.jaxb2.jaxb2Configurator"
-            name="JAXB2 Connector Configurator"/>
+            class="org.bitstrings.eclipse.m2e.connectors.jaxb2.JvNetJaxb2ProjectConfigurator"
+            id="org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnetJaxb2Configurator"
+            name="org.jvnet JAXB2 Connector Configurator"/>
+   </extension>
+
+   <extension point="org.eclipse.m2e.core.projectConfigurators">
+      <configurator
+            class="org.bitstrings.eclipse.m2e.connectors.jaxb2.CodehausJaxb2ProjectConfigurator"
+            id="org.bitstrings.eclipse.m2e.connectors.jaxb2.codehausJaxb2Configurator"
+            name="org.codehaus JAXB2 Connector Configurator"/>
    </extension>
 
    <extension point="org.eclipse.m2e.core.lifecycleMappingMetadataSource"/>
