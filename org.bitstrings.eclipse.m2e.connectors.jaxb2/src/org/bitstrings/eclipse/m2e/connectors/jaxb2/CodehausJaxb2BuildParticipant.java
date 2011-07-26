@@ -47,7 +47,7 @@ public class CodehausJaxb2BuildParticipant extends MojoExecutionBuildParticipant
 
         boolean filesModified =
             (!StringUtils.isEmpty(schemaListFileName)
-                        || !ArrayUtils.isEmpty(
+                        && !ArrayUtils.isEmpty(
                                         BuildHelper.getModifiedFiles(buildContext, new File(schemaListFileName))));
 
         if (!filesModified)
@@ -70,7 +70,7 @@ public class CodehausJaxb2BuildParticipant extends MojoExecutionBuildParticipant
         if (!filesModified)
         {
             filesModified =
-                !ArrayUtils.isEmpty(
+                    !ArrayUtils.isEmpty(
                             BuildHelper.getModifiedFiles(
                                             mavenSession, mojoExecution,
                                             maven, buildContext,
