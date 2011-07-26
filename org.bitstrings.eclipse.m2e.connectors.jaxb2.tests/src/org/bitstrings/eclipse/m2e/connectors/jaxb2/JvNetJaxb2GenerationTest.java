@@ -20,7 +20,7 @@ import org.eclipse.m2e.core.project.ResolverConfiguration;
 import org.eclipse.m2e.tests.common.AbstractMavenProjectTestCase;
 
 @SuppressWarnings( "restriction" )
-public class Jaxb2GenerationTest extends AbstractMavenProjectTestCase
+public class JvNetJaxb2GenerationTest extends AbstractMavenProjectTestCase
 {
     public void testSchemaJaxb2Version074() throws Exception
     {
@@ -71,7 +71,7 @@ public class Jaxb2GenerationTest extends AbstractMavenProjectTestCase
     {
         ResolverConfiguration configuration = new ResolverConfiguration();
         configuration.setActiveProfiles(profiles);
-        IProject project = importProject("projects/test/pom.xml", configuration);
+        IProject project = importProject("projects/jvnet-test/pom.xml", configuration);
         waitForJobsToComplete();
 
         project.build(IncrementalProjectBuilder.FULL_BUILD, monitor);
@@ -82,7 +82,7 @@ public class Jaxb2GenerationTest extends AbstractMavenProjectTestCase
 
         IClasspathEntry[] cp = JavaCore.create(project).getRawClasspath();
 
-        assertEquals(new Path("/test/target/generated-sources/xjc"), cp[4].getPath());
+        assertEquals(new Path("/jvnet-test/target/generated-sources/xjc"), cp[4].getPath());
 
         assertTrue(
                 project
