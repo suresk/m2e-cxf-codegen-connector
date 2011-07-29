@@ -38,16 +38,6 @@ public class Jaxb2SchemagenTest extends AbstractMavenProjectTestCase
 
         assertTrue(
                 project
-                    .getFile("target/generated-resources/schemagen/test/Bean.class")
-                        .isSynchronized(IResource.DEPTH_ZERO));
-
-        assertTrue(
-                project
-                    .getFile("target/generated-resources/schemagen/test/Bean.class")
-                        .isAccessible());
-
-        assertTrue(
-                project
                     .getFile("target/generated-resources/schemagen/schema1.xsd")
                         .isSynchronized(IResource.DEPTH_ZERO));
 
