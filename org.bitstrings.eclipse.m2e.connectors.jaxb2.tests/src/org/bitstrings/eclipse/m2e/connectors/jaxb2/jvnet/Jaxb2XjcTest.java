@@ -8,7 +8,7 @@
  *    http://www.eclipse.org/legal/epl-v10.html
  *
  */
-package org.bitstrings.eclipse.m2e.connectors.jaxb2;
+package org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnet;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -19,11 +19,11 @@ import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.m2e.tests.common.AbstractMavenProjectTestCase;
 
 @SuppressWarnings( "restriction" )
-public class CodehausJaxb2GenerationTest extends AbstractMavenProjectTestCase
+public class Jaxb2XjcTest extends AbstractMavenProjectTestCase
 {
-    public void testSchema() throws Exception
+    public void testXjc() throws Exception
     {
-        IProject project = importProject("projects/codehaus-test/pom.xml");
+        IProject project = importProject("projects/codehaus-xjc-test/pom.xml");
         waitForJobsToComplete();
 
         project.build(IncrementalProjectBuilder.FULL_BUILD, monitor);
@@ -34,7 +34,7 @@ public class CodehausJaxb2GenerationTest extends AbstractMavenProjectTestCase
 
         IClasspathEntry[] cp = JavaCore.create(project).getRawClasspath();
 
-        assertEquals(new Path("/codehaus-test/target/generated-sources/jaxb"), cp[3].getPath());
+        assertEquals(new Path("/codehaus-xjc-test/target/generated-sources/jaxb"), cp[3].getPath());
 
         assertTrue(
                 project

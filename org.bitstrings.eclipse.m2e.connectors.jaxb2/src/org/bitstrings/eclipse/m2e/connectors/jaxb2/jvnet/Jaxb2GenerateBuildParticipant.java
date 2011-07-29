@@ -8,13 +8,12 @@
  *    http://www.eclipse.org/legal/epl-v10.html
  *
  */
-package org.bitstrings.eclipse.m2e.connectors.jaxb2;
+package org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnet;
 
 import java.io.File;
 import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.MojoExecution;
 import org.bitstrings.eclipse.m2e.common.BuildHelper;
@@ -25,9 +24,9 @@ import org.eclipse.m2e.core.embedder.IMaven;
 import org.eclipse.m2e.core.project.configurator.MojoExecutionBuildParticipant;
 import org.sonatype.plexus.build.incremental.BuildContext;
 
-public class CodehausJaxb2BuildParticipant extends MojoExecutionBuildParticipant
+public class Jaxb2GenerateBuildParticipant extends MojoExecutionBuildParticipant
 {
-    public CodehausJaxb2BuildParticipant(MojoExecution execution)
+    public Jaxb2GenerateBuildParticipant(MojoExecution execution)
     {
         super(execution, true);
     }
@@ -40,49 +39,25 @@ public class CodehausJaxb2BuildParticipant extends MojoExecutionBuildParticipant
         final MavenSession mavenSession = getSession();
         final MojoExecution mojoExecution = getMojoExecution();
 
-        final String schemaListFileName =
-                            maven.getMojoParameterValue(
-                                            mavenSession, mojoExecution,
-                                            "schemaListFileName",
-                                            String.class);
-
         boolean filesModified =
-            (!StringUtils.isEmpty(schemaListFileName)
-                        && !ArrayUtils.isEmpty(
-                                        BuildHelper.getModifiedFiles(buildContext, new File(schemaListFileName))));
-
-        if (!filesModified)
-        {
-            filesModified =
                     !ArrayUtils.isEmpty(
                             BuildHelper.getModifiedFiles(
                                             mavenSession, mojoExecution,
                                             maven, buildContext,
                                             "schemaDirectory",
-                                            StringUtils.split(
-                                                    maven.getMojoParameterValue(
-                                                                    mavenSession, mojoExecution,
-                                                                    "schemaFiles",
-                                                                    String.class),
-                                                    ','),
-                                            null));
-        }
+                                            "schemaIncludes",
+                                            "schemaIncludes"));
 
         if (!filesModified)
         {
             filesModified =
-                    !ArrayUtils.isEmpty(
+                !ArrayUtils.isEmpty(
                             BuildHelper.getModifiedFiles(
                                             mavenSession, mojoExecution,
                                             maven, buildContext,
                                             "bindingDirectory",
-                                            StringUtils.split(
-                                                    maven.getMojoParameterValue(
-                                                                    mavenSession, mojoExecution,
-                                                                    "bindingFiles",
-                                                                    String.class),
-                                                    ','),
-                                            null));
+                                            "bindingIncludes",
+                                            "bindingExcludes"));
         }
 
         if (!filesModified)
@@ -90,10 +65,10 @@ public class CodehausJaxb2BuildParticipant extends MojoExecutionBuildParticipant
             return null;
         }
 
-        Set<IProject> result = super.build(kind, monitor);
+        final Set<IProject> result = super.build(kind, monitor);
 
         final File generated =
-                        maven.getMojoParameterValue(mavenSession, mojoExecution, "outputDirectory", File.class);
+                        maven.getMojoParameterValue(mavenSession, mojoExecution, "generateDirectory", File.class);
 
         if (generated != null)
         {

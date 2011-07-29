@@ -15,15 +15,22 @@
 
    <extension point="org.eclipse.m2e.core.projectConfigurators">
       <configurator
-            class="org.bitstrings.eclipse.m2e.connectors.jaxb2.JvNetJaxb2ProjectConfigurator"
-            id="org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnetJaxb2Configurator"
+            class="org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnet.Jaxb2GenerateProjectConfigurator"
+            id="org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnet.Jaxb2GenerateConfigurator"
             name="org.jvnet JAXB2 Connector Configurator"/>
    </extension>
 
    <extension point="org.eclipse.m2e.core.projectConfigurators">
       <configurator
-            class="org.bitstrings.eclipse.m2e.connectors.jaxb2.CodehausJaxb2ProjectConfigurator"
-            id="org.bitstrings.eclipse.m2e.connectors.jaxb2.codehausJaxb2Configurator"
+            class="org.bitstrings.eclipse.m2e.connectors.jaxb2.codehaus.Jaxb2XjcProjectConfigurator"
+            id="org.bitstrings.eclipse.m2e.connectors.jaxb2.codehaus.Jaxb2XjcConfigurator"
+            name="org.codehaus JAXB2 Connector Configurator"/>
+   </extension>
+
+   <extension point="org.eclipse.m2e.core.projectConfigurators">
+      <configurator
+            class="org.bitstrings.eclipse.m2e.connectors.jaxb2.codehaus.Jaxb2SchemagenProjectConfigurator"
+            id="org.bitstrings.eclipse.m2e.connectors.jaxb2.codehaus.Jaxb2SchemagenConfigurator"
             name="org.codehaus JAXB2 Connector Configurator"/>
    </extension>
 

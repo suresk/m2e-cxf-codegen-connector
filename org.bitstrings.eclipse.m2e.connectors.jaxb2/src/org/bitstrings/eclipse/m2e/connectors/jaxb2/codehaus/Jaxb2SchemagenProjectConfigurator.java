@@ -8,7 +8,7 @@
  *    http://www.eclipse.org/legal/epl-v10.html
  *
  */
-package org.bitstrings.eclipse.m2e.connectors.jaxb2;
+package org.bitstrings.eclipse.m2e.connectors.jaxb2.codehaus;
 
 import org.apache.maven.plugin.MojoExecution;
 import org.eclipse.m2e.core.lifecyclemapping.model.IPluginExecutionMetadata;
@@ -16,7 +16,7 @@ import org.eclipse.m2e.core.project.IMavenProjectFacade;
 import org.eclipse.m2e.core.project.configurator.AbstractBuildParticipant;
 import org.eclipse.m2e.jdt.AbstractJavaProjectConfigurator;
 
-public class CodehausJaxb2ProjectConfigurator extends AbstractJavaProjectConfigurator
+public class Jaxb2SchemagenProjectConfigurator extends AbstractJavaProjectConfigurator
 {
     @Override
     public AbstractBuildParticipant getBuildParticipant(
@@ -24,6 +24,6 @@ public class CodehausJaxb2ProjectConfigurator extends AbstractJavaProjectConfigu
                     MojoExecution execution,
                     IPluginExecutionMetadata executionMetadata)
     {
-        return new CodehausJaxb2BuildParticipant(execution);
+        return new Jaxb2SchemagenBuildParticipant(execution);
     }
 }

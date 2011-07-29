@@ -15,7 +15,7 @@
             </pluginExecutionFilter>
             <action>
                 <configurator>
-                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnetJaxb2Configurator</id>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnet.Jaxb2GenerateConfigurator</id>
                 </configurator>
             </action>
         </pluginExecution>
@@ -30,7 +30,7 @@
             </pluginExecutionFilter>
             <action>
                 <configurator>
-                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnetJaxb2Configurator</id>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnet.Jaxb2GenerateConfigurator</id>
                 </configurator>
             </action>
         </pluginExecution>
@@ -45,7 +45,7 @@
             </pluginExecutionFilter>
             <action>
                 <configurator>
-                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnetJaxb2Configurator</id>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnet.Jaxb2GenerateConfigurator</id>
                 </configurator>
             </action>
         </pluginExecution>
@@ -60,7 +60,7 @@
             </pluginExecutionFilter>
             <action>
                 <configurator>
-                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnetJaxb2Configurator</id>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnet.Jaxb2GenerateConfigurator</id>
                 </configurator>
             </action>
         </pluginExecution>
@@ -78,7 +78,23 @@
             </pluginExecutionFilter>
             <action>
                 <configurator>
-                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.codehausJaxb2Configurator</id>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.codehaus.Jaxb2XjcConfigurator</id>
+                </configurator>
+            </action>
+        </pluginExecution>
+        <pluginExecution>
+            <pluginExecutionFilter>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <versionRange>[1.3,)</versionRange>
+                <goals>
+                    <goal>schemagen</goal>
+                    <goal>testSchemagen</goal>
+                </goals>
+            </pluginExecutionFilter>
+            <action>
+                <configurator>
+                    <id>org.bitstrings.eclipse.m2e.connectors.jaxb2.codehaus.Jaxb2SchemagenConfigurator</id>
                 </configurator>
             </action>
         </pluginExecution>

@@ -8,7 +8,7 @@
  *    http://www.eclipse.org/legal/epl-v10.html
  *
  */
-package org.bitstrings.eclipse.m2e.connectors.jaxb2;
+package org.bitstrings.eclipse.m2e.connectors.jaxb2codehaus;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -20,58 +20,58 @@ import org.eclipse.m2e.core.project.ResolverConfiguration;
 import org.eclipse.m2e.tests.common.AbstractMavenProjectTestCase;
 
 @SuppressWarnings( "restriction" )
-public class JvNetJaxb2GenerationTest extends AbstractMavenProjectTestCase
+public class Jaxb2GenerateTest extends AbstractMavenProjectTestCase
 {
-    public void testSchemaJaxb2Version074() throws Exception
+    public void testGenerateVersion074() throws Exception
     {
-        commonSchemaTest("jaxb2-plugin, jaxb2-version-0.7.4");
+        commonGenerateTest("jaxb2-plugin, jaxb2-version-0.7.4");
     }
 
-    public void testSchemaJaxb2Version075() throws Exception
+    public void testGenerateVersion075() throws Exception
     {
-        commonSchemaTest("jaxb2-plugin, jaxb2-version-0.7.5");
+        commonGenerateTest("jaxb2-plugin, jaxb2-version-0.7.5");
     }
 
-    public void testSchemaJaxb2Version080() throws Exception
+    public void testGenerateVersion080() throws Exception
     {
-        commonSchemaTest("jaxb2-plugin, jaxb2-version-0.8.0");
+        commonGenerateTest("jaxb2-plugin, jaxb2-version-0.8.0");
     }
 
-    public void testSchemaJaxb20Version075() throws Exception
+    public void testGenerate0Version075() throws Exception
     {
-        commonSchemaTest("jaxb20-plugin, jaxb2-version-0.7.5");
+        commonGenerateTest("jaxb20-plugin, jaxb2-version-0.7.5");
     }
 
-    public void testSchemaJaxb20Version080() throws Exception
+    public void testGenerate0Version080() throws Exception
     {
-        commonSchemaTest("jaxb20-plugin, jaxb2-version-0.8.0");
+        commonGenerateTest("jaxb20-plugin, jaxb2-version-0.8.0");
     }
 
-    public void testSchemaJaxb21Version075() throws Exception
+    public void testGenerate1Version075() throws Exception
     {
-        commonSchemaTest("jaxb21-plugin, jaxb2-version-0.7.5");
+        commonGenerateTest("jaxb21-plugin, jaxb2-version-0.7.5");
     }
 
-    public void testSchemaJaxb21Version080() throws Exception
+    public void testGenerate1Version080() throws Exception
     {
-        commonSchemaTest("jaxb21-plugin, jaxb2-version-0.8.0");
+        commonGenerateTest("jaxb21-plugin, jaxb2-version-0.8.0");
     }
 
-    public void testSchemaJaxb22Version075() throws Exception
+    public void testGenerate2Version075() throws Exception
     {
-        commonSchemaTest("jaxb22-plugin, jaxb2-version-0.7.5");
+        commonGenerateTest("jaxb22-plugin, jaxb2-version-0.7.5");
     }
 
-    public void testSchemaJaxb22Version080() throws Exception
+    public void testGenerate2Version080() throws Exception
     {
-        commonSchemaTest("jaxb22-plugin, jaxb2-version-0.8.0");
+        commonGenerateTest("jaxb22-plugin, jaxb2-version-0.8.0");
     }
 
-    protected void commonSchemaTest(String profiles) throws Exception
+    protected void commonGenerateTest(String profiles) throws Exception
     {
         ResolverConfiguration configuration = new ResolverConfiguration();
         configuration.setActiveProfiles(profiles);
-        IProject project = importProject("projects/jvnet-test/pom.xml", configuration);
+        IProject project = importProject("projects/jvnet-generate-test/pom.xml", configuration);
         waitForJobsToComplete();
 
         project.build(IncrementalProjectBuilder.FULL_BUILD, monitor);
@@ -82,7 +82,7 @@ public class JvNetJaxb2GenerationTest extends AbstractMavenProjectTestCase
 
         IClasspathEntry[] cp = JavaCore.create(project).getRawClasspath();
 
-        assertEquals(new Path("/jvnet-test/target/generated-sources/xjc"), cp[4].getPath());
+        assertEquals(new Path("/jvnet-generate-test/target/generated-sources/xjc"), cp[4].getPath());
 
         assertTrue(
                 project

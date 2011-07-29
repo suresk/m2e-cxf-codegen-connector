@@ -8,7 +8,7 @@
  *    http://www.eclipse.org/legal/epl-v10.html
  *
  */
-package org.bitstrings.eclipse.m2e.connectors.jaxb2;
+package org.bitstrings.eclipse.m2e.connectors.jaxb2.codehaus;
 
 import java.io.File;
 import java.util.Set;
@@ -24,9 +24,9 @@ import org.eclipse.m2e.core.embedder.IMaven;
 import org.eclipse.m2e.core.project.configurator.MojoExecutionBuildParticipant;
 import org.sonatype.plexus.build.incremental.BuildContext;
 
-public class JvNetJaxb2BuildParticipant extends MojoExecutionBuildParticipant
+public class Jaxb2SchemagenBuildParticipant extends MojoExecutionBuildParticipant
 {
-    public JvNetJaxb2BuildParticipant(MojoExecution execution)
+    public Jaxb2SchemagenBuildParticipant(MojoExecution execution)
     {
         super(execution, true);
     }
@@ -39,42 +39,33 @@ public class JvNetJaxb2BuildParticipant extends MojoExecutionBuildParticipant
         final MavenSession mavenSession = getSession();
         final MojoExecution mojoExecution = getMojoExecution();
 
-        boolean filesModified =
-                    !ArrayUtils.isEmpty(
+        for (final String source : mavenSession.getCurrentProject().getCompileSourceRoots())
+        {
+            if (!ArrayUtils.isEmpty(
                             BuildHelper.getModifiedFiles(
                                             mavenSession, mojoExecution,
                                             maven, buildContext,
-                                            "schemaDirectory",
-                                            "schemaIncludes",
-                                            "schemaIncludes"));
+                                            new File(source),
+                                            "includes",
+                                            "excludes")))
+            {
+                final Set<IProject> result = super.build(kind, monitor);
 
-        if (!filesModified)
-        {
-            filesModified =
-                !ArrayUtils.isEmpty(
-                            BuildHelper.getModifiedFiles(
-                                            mavenSession, mojoExecution,
-                                            maven, buildContext,
-                                            "bindingDirectory",
-                                            "bindingIncludes",
-                                            "bindingExcludes"));
+                final File generated =
+                                maven.getMojoParameterValue(
+                                                mavenSession, mojoExecution,
+                                                "outputDirectory",
+                                                File.class);
+
+                if (generated != null)
+                {
+                    buildContext.refresh(generated);
+                }
+
+                return result;
+            }
         }
 
-        if (!filesModified)
-        {
-            return null;
-        }
-
-        Set<IProject> result = super.build(kind, monitor);
-
-        final File generated =
-                        maven.getMojoParameterValue(mavenSession, mojoExecution, "generateDirectory", File.class);
-
-        if (generated != null)
-        {
-            buildContext.refresh(generated);
-        }
-
-        return result;
+        return null;
     }
 }
