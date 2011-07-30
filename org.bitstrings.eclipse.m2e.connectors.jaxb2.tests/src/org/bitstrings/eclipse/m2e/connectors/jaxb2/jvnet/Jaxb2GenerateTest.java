@@ -8,7 +8,7 @@
  *    http://www.eclipse.org/legal/epl-v10.html
  *
  */
-package org.bitstrings.eclipse.m2e.connectors.jaxb2codehaus;
+package org.bitstrings.eclipse.m2e.connectors.jaxb2.jvnet;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -70,7 +70,10 @@ public class Jaxb2GenerateTest extends AbstractMavenProjectTestCase
     protected void commonGenerateTest(String profiles) throws Exception
     {
         ResolverConfiguration configuration = new ResolverConfiguration();
-        configuration.setActiveProfiles(profiles);
+        if (profiles != null)
+        {
+            configuration.setActiveProfiles(profiles);
+        }
         IProject project = importProject("projects/jvnet-generate-test/pom.xml", configuration);
         waitForJobsToComplete();
 

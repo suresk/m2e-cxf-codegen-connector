@@ -93,7 +93,10 @@ public class Jaxb2XjcBuildParticipant extends MojoExecutionBuildParticipant
         final Set<IProject> result = super.build(kind, monitor);
 
         final File generated =
-                        maven.getMojoParameterValue(mavenSession, mojoExecution, "outputDirectory", File.class);
+                        maven.getMojoParameterValue(
+                                        mavenSession, mojoExecution,
+                                        "outputDirectory",
+                                        File.class);
 
         if (generated != null)
         {
