@@ -22,7 +22,7 @@
 
     <groupId>org.bitstrings.eclipse.m2e.connectors.jaxb2</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
 
     <name>m2e :: Connectors :: JAXB2 :: Parent</name>
 
