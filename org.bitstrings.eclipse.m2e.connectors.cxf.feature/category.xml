@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2010-2011 Sonatype, Inc.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+-->
+<site>
+   <feature url="features/org.bitstrings.eclipse.m2e.connectors.cxf_0.0.0.qualifier.jar" id="org.bitstrings.eclipse.m2e.connectors.cxf" version="0.0.0.qualifier">
+      <category name="m2eclipse-connectors-cfx"/>
+   </feature>
+   <category-def name="m2eclipse-connectors-cfx" label="Maven SCM Handler for EGit"/>
+</site>
