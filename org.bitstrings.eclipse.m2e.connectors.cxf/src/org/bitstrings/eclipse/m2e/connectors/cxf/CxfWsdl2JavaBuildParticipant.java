@@ -49,9 +49,9 @@ public class CxfWsdl2JavaBuildParticipant extends MojoExecutionBuildParticipant 
 			filesModified = true;
 		} else {
 
-			final WsdlOption[] wsdlOptions = maven.getMojoParameterValue(
-					mavenSession, mojoExecution, "wsdlOptions",
-					WsdlOption.class);
+			final WsdlOption[] wsdlOptions = ((WsdlOption[]) maven
+					.getMojoParameterValue(mavenSession, mojoExecution,
+							"wsdlOptions", Object.class));
 
 			for (WsdlOption wsdlOption : wsdlOptions) {
 				String wsdl = wsdlOption.getWsdl();

@@ -25,5 +25,12 @@
     <packaging>eclipse-test-plugin</packaging>
 
     <name>m2e :: Connectors :: CXF :: Tests</name>
+    
+    <dependencies>
+      <dependency>
+        <groupId>org.bitstrings.eclipse.m2e.connectors.cxf</groupId>
+        <artifactId>org.apache.cxf.codegen-plugin</artifactId>
+      </dependency>
+    </dependencies>
 
 </project>
