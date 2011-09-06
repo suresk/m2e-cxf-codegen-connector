@@ -70,6 +70,24 @@
     				</execution>
     			</executions>
     		</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>upload-site</id>
+						<phase>install</phase>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+						<configuration>
+							<serverId>lds-nexus</serverId>
+							<fromDir>${project.build.directory}/site</fromDir>
+							<url>dav:https://code.lds.org/nexus/content/sites/downloads/update/e37-thirdparty-dev/repos/cxf</url>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
     	</plugins>
     </build>
     
