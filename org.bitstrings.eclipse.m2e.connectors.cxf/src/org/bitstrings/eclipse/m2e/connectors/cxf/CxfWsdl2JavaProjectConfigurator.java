@@ -20,6 +20,12 @@ public class CxfWsdl2JavaProjectConfigurator extends
 		AbstractJavaProjectConfigurator {
 
 	@Override
+    protected String getOutputFolderParameterName()
+    {
+        return "sourceRoot";
+    }
+	
+	@Override
     public AbstractBuildParticipant getBuildParticipant(
                     IMavenProjectFacade projectFacade,
                     MojoExecution execution,
