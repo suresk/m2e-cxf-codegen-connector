@@ -91,11 +91,4 @@
     	</plugins>
     </build>
     
-    <dependencies>
-      <dependency>
-        <groupId>org.bitstrings.eclipse.m2e.connectors.cxf</groupId>
-        <artifactId>org.apache.cxf.codegen-plugin</artifactId>
-      </dependency>
-    </dependencies>
-
 </project>
